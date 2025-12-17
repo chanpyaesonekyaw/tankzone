@@ -420,7 +420,11 @@ export function App() {
       // ignore
     }
 
-    const socket = io(getSocketBaseUrl(), { auth: { token: auth.token } });
+    const socket = io(getSocketBaseUrl(), {
+      path: "/socket.io",
+      transports: ["websocket", "polling"],
+      auth: { token: auth.token },
+    });
     socketRef.current = socket;
     lastStateRef.current = null;
     snapshotsRef.current = [];

@@ -29,6 +29,10 @@ AuthHttpRoutes.register(app);
 const server = http.createServer(app);
 
 const io = new SocketIOServer(server, {
+  // Important for some Vercel setups where trailing slashes get normalized/rewritten.
+  // Keep client+server in sync on the exact Socket.IO path.
+  path: "/socket.io",
+  addTrailingSlash: false,
   cors: {
     origin: allowedOrigins,
     credentials: true,
