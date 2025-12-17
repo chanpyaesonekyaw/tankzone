@@ -18,7 +18,10 @@ const allowedOrigins = Config.CLIENT_ORIGIN.split(",")
   .map((s) => s.trim())
   .filter(Boolean);
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+const corsOptions = { origin: allowedOrigins, credentials: true };
+app.use(cors(corsOptions));
+// Ensure browser CORS preflights succeed.
+app.options("*", cors(corsOptions));
 
 app.get("/healthz", (_req, res) => res.send("ok"));
 AuthHttpRoutes.register(app);

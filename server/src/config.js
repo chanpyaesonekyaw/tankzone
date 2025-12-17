@@ -24,7 +24,10 @@ export class Config {
   // Examples:
   // - "http://localhost:5173"
   // - "http://localhost:5173,http://localhost:5174,http://localhost:3001"
-  static CLIENT_ORIGIN = getEnvString("CLIENT_ORIGIN", "http://localhost:5173,http://localhost:5174,http://localhost:3001");
+  static CLIENT_ORIGIN = getEnvString(
+    "CLIENT_ORIGIN",
+    "https://tankzone.vercel.app,http://localhost:5173,http://localhost:5174,http://localhost:3001",
+  );
 
   static JWT_SECRET = getEnvString("JWT_SECRET", "dev_change_me");
   static JWT_EXPIRES_IN = getEnvString("JWT_EXPIRES_IN", "7d");
